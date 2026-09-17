@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K5 Archive</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f2;
+      color: #111;
+    }
+
+    header {
+      padding: 24px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      background: #f5f5f2;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero {
+      min-height: 75vh;
+      padding: 80px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 650px;
+    }
+
+    .hero-text p {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 10vw, 140px);
+      line-height: .85;
+      letter-spacing: -7px;
+      margin-bottom: 35px;
+    }
+
+    .hero-description {
+      max-width: 430px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .shop-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 28px;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .products {
+      padding: 80px 6%;
+      background: white;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: 42px;
+      letter-spacing: -2px;
+    }
+
+    .section-heading span {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: #f1f1ee;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 390px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ddd;
+      font-size: 12px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .product-info {
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .product-brand {
+      font-size: 12px;
+      color: #777;
+    }
+
+    .price {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .about {
+      padding: 100px 6%;
+      background: #111;
+      color: white;
+    }
+
+    .about h2 {
+      font-size: clamp(45px, 7vw, 90px);
+      line-height: .95;
+      max-width: 850px;
+      letter-spacing: -4px;
+    }
+
+    .about p {
+      max-width: 500px;
+      margin-top: 35px;
+      line-height: 1.7;
+      color: #bbb;
+    }
+
+    footer {
+      padding: 30px 6%;
+      background: #111;
+      color: #777;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 65vh;
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -4px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 420px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">K5 ARCHIVE</div>
+
+    <nav>
+      <a href="#shop">SHOP</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+
+  <section class="hero">
+    <div class="hero-text">
+      <p>Curated fashion · Istanbul</p>
+
+      <h1>K5<br>ARCHIVE</h1>
+
+      <div class="hero-description">
+        Curated pieces, streetwear and timeless drips.
+        Sourced from Turkey and made available worldwide.
+      </div>
+
+      <a class="shop-button" href="#shop">EXPLORE THE ARCHIVE</a>
+    </div>
+  </section>
+
+
+  <section class="products" id="shop">
+
+    <div class="section-heading">
+      <h2>THE ARCHIVE</h2>
+      <span>AVAILABLE PIECES</span>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Classic Polo</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$45</div>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Leather Trousers</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$80</div>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Oversized Tee</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$35</div>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Archive Trousers</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$60</div>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Premium Polo</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$50</div>
+        </div>
+      </div>
+
+
+      <div class="product">
+        <div class="product-image">Product Image</div>
+        <div class="product-info">
+          <div>
+            <div class="product-name">Streetwear Jacket</div>
+            <div class="product-brand">K5 Selection</div>
+          </div>
+          <div class="price">$95</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+
+    <h2>BUILT FROM THE DRIP. CURATED FOR THE ARCHIVE.</h2>
+
+    <p>
+      K5 Archive is a fashion project built around finding standout
+      pieces and bringing them from Istanbul to the world.
+      Every piece is selected with individuality, quality and style in mind.
+    </p>
+
+  </section>
+
+
+  <footer id="contact">
+    <span>© 2026 K5 ARCHIVE</span>
+    <span>ISTANBUL · TANZANIA · WORLDWIDE</span>
+  </footer>
+
+</body>
+</html>
