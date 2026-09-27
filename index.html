@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>K5 Archive</title>
+  <title>K5 ARCHIVE — Istanbul / Tanzania</title>
 
   <style>
     * {
@@ -18,9 +18,10 @@
     }
 
     body {
+      background: #111;
+      color: #f4f3ef;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f2;
-      color: #111;
+      overflow-x: hidden;
     }
 
     a {
@@ -28,94 +29,64 @@
       text-decoration: none;
     }
 
-    /* NAVIGATION */
+    /* =========================
+       NAV
+    ========================= */
+
     nav {
-      height: 80px;
-      padding: 0 6%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 22px 5%;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background: #f5f5f2;
-      border-bottom: 1px solid #ddd;
+      align-items: center;
+      mix-blend-mode: difference;
+      color: white;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 900;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-      font-size: 13px;
+      gap: 25px;
+      font-size: 11px;
       font-weight: bold;
       text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      transition: opacity 0.2s ease;
     }
 
     .nav-links a:hover {
       opacity: 0.5;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
-      min-height: 80vh;
-      padding: 80px 6%;
+      min-height: 100vh;
+      position: relative;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-    }
-
-    .hero-text {
-      width: 50%;
-    }
-
-    .hero-small {
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #777;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(55px, 9vw, 130px);
-      line-height: 0.85;
-      letter-spacing: -7px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-    }
-
-    .hero-description {
-      max-width: 450px;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 35px;
-    }
-
-    .shop-button {
-      display: inline-block;
-      padding: 16px 30px;
-      background: #111;
-      color: white;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: 0.2s;
-    }
-
-    .shop-button:hover {
-      background: #333;
+      align-items: flex-end;
+      padding: 45px 5%;
+      overflow: hidden;
     }
 
     .hero-image {
-      width: 45%;
-      height: 600px;
-      overflow: hidden;
-      background: #ddd;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
     }
 
     .hero-image img {
@@ -123,210 +94,464 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      filter: brightness(0.55);
     }
 
-    /* PRODUCTS */
-    .products {
-      padding: 100px 6%;
-      background: white;
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.25),
+          rgba(0,0,0,0.15) 40%,
+          rgba(0,0,0,0.8)
+        );
+      z-index: 1;
     }
 
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      margin-bottom: 40px;
-    }
-
-    .section-heading h2 {
-      font-size: 48px;
-      letter-spacing: -3px;
-      text-transform: uppercase;
-    }
-
-    .section-heading span {
-      font-size: 12px;
-      color: #777;
-      text-transform: uppercase;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
-    }
-
-    .product {
-      background: #f1f1ee;
-      overflow: hidden;
-    }
-
-    .product-image {
-      height: 550px;
-      background: #e5e5e2;
-      overflow: hidden;
-    }
-
-    .product-image img {
+    .hero-content {
+      position: relative;
+      z-index: 2;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
     }
 
-    .product:hover .product-image img {
-      transform: scale(1.03);
-    }
-
-    .product-info {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .product-name {
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 7px;
-      text-transform: uppercase;
-    }
-
-    .product-brand {
+    .eyebrow {
       font-size: 11px;
-      color: #777;
-      letter-spacing: 1px;
-    }
-
-    .price {
-      font-size: 14px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 120px 6%;
-      background: #111;
-      color: white;
-    }
-
-    .about-label {
-      font-size: 11px;
-      color: #888;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      color: #ddd;
     }
 
-    .about h2 {
-      max-width: 900px;
-      font-size: clamp(40px, 6vw, 85px);
-      line-height: 0.95;
-      letter-spacing: -4px;
-      margin-bottom: 40px;
+    .hero h1 {
+      font-size: clamp(70px, 14vw, 190px);
+      line-height: 0.78;
+      letter-spacing: -9px;
+      text-transform: uppercase;
+      font-weight: 900;
+      max-width: 1100px;
     }
 
-    .about p {
-      max-width: 600px;
-      color: #aaa;
-      font-size: 16px;
+    .hero-bottom {
+      margin-top: 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+    }
+
+    .hero-copy {
+      max-width: 390px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    .scroll-text {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ccc;
+    }
+
+    /* =========================
+       MARQUEE
+    ========================= */
+
+    .marquee {
+      background: #f4f3ef;
+      color: #111;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 17px 0;
+      border-bottom: 1px solid #111;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: move 22s linear infinite;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @keyframes move {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================
+       IDEA
+    ========================= */
+
+    .idea {
+      background: #f4f3ef;
+      color: #111;
+      padding: 130px 5%;
+    }
+
+    .section-number {
+      font-size: 10px;
+      color: #777;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+    }
+
+    .idea-title {
+      max-width: 1000px;
+      font-size: clamp(55px, 9vw, 125px);
+      line-height: 0.82;
+      letter-spacing: -7px;
+      text-transform: uppercase;
+    }
+
+    .idea-copy {
+      max-width: 520px;
+      margin-top: 50px;
+      margin-left: auto;
+      font-size: 15px;
       line-height: 1.7;
+      color: #555;
     }
 
-    /* CONTACT */
-    .contact {
-      padding: 100px 6%;
-      background: #f5f5f2;
+    .idea-copy strong {
+      color: #111;
     }
 
-    .contact h2 {
-      font-size: 55px;
-      letter-spacing: -3px;
-      margin-bottom: 30px;
+    /* =========================
+       EMPTY DROP
+    ========================= */
+
+    .drop {
+      background: #f4f3ef;
+      color: #111;
+      padding: 80px 5% 140px;
     }
 
-    .contact p {
-      color: #666;
+    .drop-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #bbb;
+      padding-top: 20px;
+      margin-bottom: 60px;
+    }
+
+    .drop-heading h2 {
+      font-size: clamp(50px, 8vw, 110px);
+      line-height: 0.8;
+      letter-spacing: -6px;
+      text-transform: uppercase;
+    }
+
+    .drop-status {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #777;
+    }
+
+    .coming-soon {
+      min-height: 330px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .coming-soon-inner {
+      max-width: 550px;
+    }
+
+    .coming-soon h3 {
+      font-size: clamp(35px, 6vw, 75px);
+      line-height: 0.9;
+      letter-spacing: -4px;
+      text-transform: uppercase;
       margin-bottom: 25px;
     }
 
-    .contact-link {
-      font-size: 18px;
-      font-weight: bold;
-      border-bottom: 1px solid #111;
-      padding-bottom: 5px;
+    .coming-soon p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #777;
     }
 
-    /* FOOTER */
-    footer {
-      padding: 30px 6%;
+    /* =========================
+       WORLD
+    ========================= */
+
+    .world {
+      min-height: 90vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 60px 5%;
+      overflow: hidden;
+    }
+
+    .world-image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .world-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+
+    .world-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.1)
+      );
+    }
+
+    .world-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .world-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #bbb;
+      margin-bottom: 25px;
+    }
+
+    .world h2 {
+      font-size: clamp(65px, 12vw, 160px);
+      line-height: 0.78;
+      letter-spacing: -8px;
+      text-transform: uppercase;
+    }
+
+    .world-copy {
+      max-width: 470px;
+      margin-top: 35px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    /* =========================
+       STORY
+    ========================= */
+
+    .story {
       background: #111;
-      color: white;
+      color: #f4f3ef;
+      padding: 150px 5%;
+    }
+
+    .story-top {
       display: flex;
       justify-content: space-between;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      gap: 40px;
+      margin-bottom: 70px;
     }
 
-    /* MOBILE */
-    @media (max-width: 800px) {
+    .story-number {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #777;
+    }
+
+    .story-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #777;
+      text-transform: uppercase;
+    }
+
+    .story h2 {
+      max-width: 1100px;
+      font-size: clamp(65px, 11vw, 155px);
+      line-height: 0.78;
+      letter-spacing: -8px;
+      text-transform: uppercase;
+      margin-bottom: 65px;
+    }
+
+    .story-copy {
+      max-width: 570px;
+      margin-left: auto;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    .story-copy p {
+      margin-bottom: 20px;
+    }
+
+    .story-stamp {
+      margin-top: 70px;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #f4f3ef;
+    }
+
+    /* =========================
+       FUTURE
+    ========================= */
+
+    .future {
+      background: #f4f3ef;
+      color: #111;
+      padding: 140px 5%;
+    }
+
+    .future-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 35px;
+    }
+
+    .future h2 {
+      font-size: clamp(60px, 11vw, 150px);
+      line-height: 0.8;
+      letter-spacing: -8px;
+      text-transform: uppercase;
+    }
+
+    .future-text {
+      max-width: 520px;
+      margin: 55px 0 0 auto;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111;
+      color: #f4f3ef;
+      padding: 35px 5%;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
 
       nav {
-        height: 70px;
+        padding: 18px 5%;
       }
 
       .nav-links {
-        gap: 15px;
-        font-size: 10px;
+        gap: 12px;
+        font-size: 9px;
       }
 
       .hero {
-        min-height: auto;
-        padding: 60px 6%;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-text {
-        width: 100%;
+        min-height: 92vh;
+        padding: 35px 5%;
       }
 
       .hero h1 {
-        font-size: 65px;
+        font-size: 72px;
+        letter-spacing: -5px;
+      }
+
+      .hero-bottom {
+        display: block;
+        margin-top: 30px;
+      }
+
+      .scroll-text {
+        margin-top: 30px;
+      }
+
+      .idea,
+      .story,
+      .future {
+        padding: 100px 5%;
+      }
+
+      .idea-title {
+        font-size: 60px;
         letter-spacing: -4px;
       }
 
-      .hero-image {
-        width: 100%;
-        height: 500px;
+      .idea-copy {
+        margin-left: 0;
       }
 
-      .section-heading h2 {
-        font-size: 38px;
+      .drop {
+        padding: 70px 5% 100px;
       }
 
-      .product-grid {
-        grid-template-columns: 1fr;
+      .drop-heading {
+        display: block;
       }
 
-      .product-image {
-        height: 500px;
+      .drop-heading h2 {
+        font-size: 65px;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
       }
 
-      .about h2 {
+      .coming-soon {
+        min-height: 300px;
+      }
+
+      .coming-soon h3 {
         letter-spacing: -2px;
       }
 
-      .contact h2 {
-        font-size: 45px;
+      .world {
+        min-height: 75vh;
+      }
+
+      .world h2 {
+        font-size: 72px;
+        letter-spacing: -5px;
+      }
+
+      .story h2 {
+        font-size: 70px;
+        letter-spacing: -5px;
+      }
+
+      .story-top {
+        margin-bottom: 50px;
+      }
+
+      .future h2 {
+        font-size: 70px;
+        letter-spacing: -5px;
       }
 
       footer {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
       }
     }
   </style>
@@ -334,119 +559,140 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav>
-    <div class="logo">K5 ARCHIVE</div>
+
+    <a href="#" class="logo">
+      K5 ARCHIVE
+    </a>
 
     <div class="nav-links">
-      <a href="#shop">Shop</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#drop">Drop</a>
+      <a href="#story">Story</a>
+      <a href="#future">Soon</a>
     </div>
+
   </nav>
 
 
   <!-- HERO -->
   <section class="hero">
 
-    <div class="hero-text">
+    <div class="hero-image">
+      <img src="look1.jpeg" alt="K5 Archive editorial">
+    </div>
 
-      <div class="hero-small">
-        Independent Streetwear Archive
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        ISTANBUL / TANZANIA / 001
       </div>
 
       <h1>
         K5<br>
-        Archive
+        ARCHIVE.
       </h1>
 
-      <p class="hero-description">
-        Curated pieces for people who move different.
-        K5 Archive brings streetwear, everyday essentials
-        and selected pieces together in one place.
+      <div class="hero-bottom">
+
+        <p class="hero-copy">
+          Proper pieces. No forced hype.
+          Sourced in Türkiye, carried from the ends
+          and built for wherever we go next.
+        </p>
+
+        <div class="scroll-text">
+          Scroll to explore ↓
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+
+    <div class="marquee-track">
+      K5 ARCHIVE — FROM ISTANBUL — FOR EVERYWHERE —
+      SAY LESS — K5 ARCHIVE — FROM ISTANBUL — FOR EVERYWHERE —
+      SAY LESS —
+    </div>
+
+  </div>
+
+
+  <!-- IDEA -->
+  <section class="idea">
+
+    <div class="section-number">
+      / 001 — THE IDEA
+    </div>
+
+    <h2 class="idea-title">
+      NOT JUST<br>
+      CLOTHES.<br>
+      A WHOLE<br>
+      WORLD.
+    </h2>
+
+    <div class="idea-copy">
+
+      <p>
+        K5 Archive starts with the pieces we rate.
+        Found in Türkiye, selected properly and moved
+        across borders.
       </p>
 
-      <a href="#shop" class="shop-button">
-        Shop Collection
-      </a>
+      <br>
 
-    </div>
+      <p>
+        <strong>
+          No rushing the label.
+        </strong>
+        First we build the archive.
+        Then we build the community.
+        Then we make something that's fully ours.
+      </p>
 
-    <div class="hero-image">
-      <img src="look1.jpeg" alt="K5 Archive">
     </div>
 
   </section>
 
 
-  <!-- PRODUCTS -->
-  <section class="products" id="shop">
+  <!-- DROP -->
+  <section class="drop" id="drop">
 
-    <div class="section-heading">
+    <div class="drop-heading">
 
-      <h2>Collection</h2>
+      <h2>
+        THE DROP
+      </h2>
 
-      <span>
-        K5 Archive / 001
-      </span>
+      <div class="drop-status">
+        Coming soon
+      </div>
 
     </div>
 
+    <div class="coming-soon">
 
-    <div class="product-grid">
+      <div class="coming-soon-inner">
 
-      <!-- PRODUCT 01 -->
-      <div class="product">
+        <h3>
+          Proper pieces<br>
+          loading.
+        </h3>
 
-        <div class="product-image">
-          <img src="look1.jpeg" alt="K5 Archive Look 01">
-        </div>
-
-        <div class="product-info">
-
-          <div>
-            <div class="product-name">
-              K5 Essential
-            </div>
-
-            <div class="product-brand">
-              K5 ARCHIVE
-            </div>
-          </div>
-
-          <div class="price">
-            ₺1,200
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT 02 -->
-      <div class="product">
-
-        <div class="product-image">
-          <img src="look2.jpeg" alt="K5 Archive Look 02">
-        </div>
-
-        <div class="product-info">
-
-          <div>
-            <div class="product-name">
-              K5 Signature
-            </div>
-
-            <div class="product-brand">
-              K5 ARCHIVE
-            </div>
-          </div>
-
-          <div class="price">
-            ₺1,500
-          </div>
-
-        </div>
+        <p>
+          We're not filling the site with random stock just
+          to make it look busy. The first K5 pieces will land
+          when the right ones are ready.
+        </p>
 
       </div>
 
@@ -455,40 +701,128 @@
   </section>
 
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
+  <!-- WORLD -->
+  <section class="world">
 
-    <div class="about-label">
-      About K5 Archive
+    <div class="world-image">
+      <img src="look2.jpeg" alt="K5 Archive editorial">
+    </div>
+
+    <div class="world-overlay"></div>
+
+    <div class="world-content">
+
+      <div class="world-label">
+        02 / THE WORLD
+      </div>
+
+      <h2>
+        ONE CITY.<br>
+        NO BORDERS.
+      </h2>
+
+      <p class="world-copy">
+        Source in Istanbul. Take it back home.
+        Build from Tanzania. Ship wherever the next
+        person finds us.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- STORY -->
+  <section class="story" id="story">
+
+    <div class="story-top">
+
+      <div class="story-number">
+        03
+      </div>
+
+      <div class="story-label">
+        The Story
+      </div>
+
     </div>
 
     <h2>
-      WEAR WHAT<br>
-      FEELS LIKE YOU.
+      TOLD MUM.<br>
+      WE GON'<br>
+      MAKE IT.
     </h2>
 
-    <p>
-      K5 Archive is an independent clothing project connecting
-      Turkey with Tanzania and the rest of the world.
-      We focus on selected pieces, clean design and streetwear
-      culture without unnecessary limits.
-    </p>
+    <div class="story-copy">
+
+      <p>
+        It started with a simple thought:
+        what if we stopped waiting for the perfect
+        moment and just started building?
+      </p>
+
+      <p>
+        Istanbul became the starting point.
+        Tanzania became home.
+        The internet became the bridge.
+      </p>
+
+      <p>
+        So yeah, we're starting small.
+        But small doesn't mean we're thinking small.
+      </p>
+
+      <p>
+        One proper piece at a time.
+        One customer at a time.
+        One chapter at a time.
+      </p>
+
+      <div class="story-stamp">
+        IST → DAR → WORLD
+      </div>
+
+    </div>
 
   </section>
 
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
+  <!-- FUTURE -->
+  <section class="future" id="future">
 
-    <h2>LET'S TALK.</h2>
+    <div class="future-label">
+      04 / NEXT CHAPTER
+    </div>
 
-    <p>
-      For orders, collaborations and enquiries:
-    </p>
+    <h2>
+      BUILT<br>
+      DIFFERENT.
+    </h2>
 
-    <a class="contact-link" href="mailto:karumengutu34@gmail.com">
-      karumengutu34@gmail.com
-    </a>
+    <div class="future-text">
+
+      <p>
+        For now, K5 Archive is about finding pieces
+        worth putting your name behind.
+      </p>
+
+      <br>
+
+      <p>
+        Later?
+        Our own label.
+        Our own pieces.
+        Our own world.
+      </p>
+
+      <br>
+
+      <p>
+        Curated today.
+        Original tomorrow.
+      </p>
+
+    </div>
 
   </section>
 
@@ -497,11 +831,11 @@
   <footer>
 
     <div>
-      © 2026 K5 ARCHIVE
+      K5 ARCHIVE © 2026
     </div>
 
     <div>
-      ISTANBUL / TANZANIA
+      ISTANBUL × TANZANIA
     </div>
 
   </footer>
