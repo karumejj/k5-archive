@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>K5 Archive</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -18,80 +23,111 @@
       color: #111;
     }
 
-    header {
-      padding: 24px 6%;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+    nav {
+      height: 80px;
+      padding: 0 6%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ddd;
+      justify-content: space-between;
       background: #f5f5f2;
+      border-bottom: 1px solid #ddd;
     }
 
     .logo {
-      font-size: 26px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 900;
       letter-spacing: -1px;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
-    nav a {
-      color: #111;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
+    .nav-links a:hover {
+      opacity: 0.5;
     }
 
+    /* HERO */
     .hero {
-      min-height: 75vh;
+      min-height: 80vh;
       padding: 80px 6%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 50px;
     }
 
     .hero-text {
-      max-width: 650px;
+      width: 50%;
     }
 
-    .hero-text p {
-      font-size: 13px;
-      text-transform: uppercase;
+    .hero-small {
+      font-size: 12px;
       letter-spacing: 3px;
-      margin-bottom: 20px;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 25px;
     }
 
     .hero h1 {
-      font-size: clamp(60px, 10vw, 140px);
-      line-height: .85;
+      font-size: clamp(55px, 9vw, 130px);
+      line-height: 0.85;
       letter-spacing: -7px;
-      margin-bottom: 35px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
     }
 
     .hero-description {
-      max-width: 430px;
+      max-width: 450px;
       font-size: 16px;
       line-height: 1.6;
       color: #555;
+      margin-bottom: 35px;
     }
 
     .shop-button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 15px 28px;
+      padding: 16px 30px;
       background: #111;
       color: white;
-      text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.2s;
     }
 
+    .shop-button:hover {
+      background: #333;
+    }
+
+    .hero-image {
+      width: 45%;
+      height: 600px;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* PRODUCTS */
     .products {
-      padding: 80px 6%;
+      padding: 100px 6%;
       background: white;
     }
 
@@ -99,23 +135,25 @@
       display: flex;
       justify-content: space-between;
       align-items: end;
-      margin-bottom: 35px;
+      margin-bottom: 40px;
     }
 
     .section-heading h2 {
-      font-size: 42px;
-      letter-spacing: -2px;
+      font-size: 48px;
+      letter-spacing: -3px;
+      text-transform: uppercase;
     }
 
     .section-heading span {
-      font-size: 13px;
+      font-size: 12px;
       color: #777;
+      text-transform: uppercase;
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
     }
 
     .product {
@@ -124,81 +162,150 @@
     }
 
     .product-image {
-      height: 390px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ddd;
-      font-size: 12px;
-      color: #777;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      height: 550px;
+      background: #e5e5e2;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.03);
     }
 
     .product-info {
-      padding: 18px;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
-      gap: 15px;
+      gap: 20px;
     }
 
     .product-name {
+      font-size: 15px;
       font-weight: bold;
       margin-bottom: 7px;
+      text-transform: uppercase;
     }
 
     .product-brand {
-      font-size: 12px;
+      font-size: 11px;
       color: #777;
+      letter-spacing: 1px;
     }
 
     .price {
+      font-size: 14px;
       font-weight: bold;
       white-space: nowrap;
     }
 
+    /* ABOUT */
     .about {
-      padding: 100px 6%;
+      padding: 120px 6%;
       background: #111;
       color: white;
     }
 
+    .about-label {
+      font-size: 11px;
+      color: #888;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
     .about h2 {
-      font-size: clamp(45px, 7vw, 90px);
-      line-height: .95;
-      max-width: 850px;
+      max-width: 900px;
+      font-size: clamp(40px, 6vw, 85px);
+      line-height: 0.95;
       letter-spacing: -4px;
+      margin-bottom: 40px;
     }
 
     .about p {
-      max-width: 500px;
-      margin-top: 35px;
+      max-width: 600px;
+      color: #aaa;
+      font-size: 16px;
       line-height: 1.7;
-      color: #bbb;
     }
 
+    /* CONTACT */
+    .contact {
+      padding: 100px 6%;
+      background: #f5f5f2;
+    }
+
+    .contact h2 {
+      font-size: 55px;
+      letter-spacing: -3px;
+      margin-bottom: 30px;
+    }
+
+    .contact p {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .contact-link {
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 1px solid #111;
+      padding-bottom: 5px;
+    }
+
+    /* FOOTER */
     footer {
       padding: 30px 6%;
       background: #111;
-      color: #777;
-      border-top: 1px solid #333;
+      color: white;
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
+    /* MOBILE */
     @media (max-width: 800px) {
+
       nav {
-        display: none;
+        height: 70px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 10px;
       }
 
       .hero {
-        min-height: 65vh;
-        padding-top: 60px;
+        min-height: auto;
+        padding: 60px 6%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-text {
+        width: 100%;
       }
 
       .hero h1 {
+        font-size: 65px;
         letter-spacing: -4px;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 500px;
+      }
+
+      .section-heading h2 {
+        font-size: 38px;
       }
 
       .product-grid {
@@ -206,7 +313,15 @@
       }
 
       .product-image {
-        height: 420px;
+        height: 500px;
+      }
+
+      .about h2 {
+        letter-spacing: -2px;
+      }
+
+      .contact h2 {
+        font-size: 45px;
       }
 
       footer {
@@ -219,133 +334,176 @@
 
 <body>
 
-  <header>
+  <!-- NAVIGATION -->
+  <nav>
     <div class="logo">K5 ARCHIVE</div>
 
-    <nav>
-      <a href="#shop">SHOP</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </header>
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
 
+  <!-- HERO -->
   <section class="hero">
+
     <div class="hero-text">
-      <p>Curated fashion · Istanbul</p>
 
-      <h1>K5<br>ARCHIVE</h1>
-
-      <div class="hero-description">
-        Curated pieces, streetwear and timeless drips.
-        Sourced from Turkey and made available worldwide.
+      <div class="hero-small">
+        Independent Streetwear Archive
       </div>
 
-      <a class="shop-button" href="#shop">EXPLORE THE ARCHIVE</a>
+      <h1>
+        K5<br>
+        Archive
+      </h1>
+
+      <p class="hero-description">
+        Curated pieces for people who move different.
+        K5 Archive brings streetwear, everyday essentials
+        and selected pieces together in one place.
+      </p>
+
+      <a href="#shop" class="shop-button">
+        Shop Collection
+      </a>
+
     </div>
+
+    <div class="hero-image">
+      <img src="look1.jpeg" alt="K5 Archive">
+    </div>
+
   </section>
 
 
+  <!-- PRODUCTS -->
   <section class="products" id="shop">
 
     <div class="section-heading">
-      <h2>THE ARCHIVE</h2>
-      <span>AVAILABLE PIECES</span>
+
+      <h2>Collection</h2>
+
+      <span>
+        K5 Archive / 001
+      </span>
+
     </div>
+
 
     <div class="product-grid">
 
+      <!-- PRODUCT 01 -->
       <div class="product">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <div>
-            <div class="product-name">Classic Polo</div>
-            <div class="product-brand">K5 Selection</div>
-          </div>
-          <div class="price">$45</div>
+
+        <div class="product-image">
+          <img src="look1.jpeg" alt="K5 Archive Look 01">
         </div>
+
+        <div class="product-info">
+
+          <div>
+            <div class="product-name">
+              K5 Essential
+            </div>
+
+            <div class="product-brand">
+              K5 ARCHIVE
+            </div>
+          </div>
+
+          <div class="price">
+            ₺1,200
+          </div>
+
+        </div>
+
       </div>
 
 
+      <!-- PRODUCT 02 -->
       <div class="product">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <div>
-            <div class="product-name">Leather Trousers</div>
-            <div class="product-brand">K5 Selection</div>
-          </div>
-          <div class="price">$80</div>
+
+        <div class="product-image">
+          <img src="look2.jpeg" alt="K5 Archive Look 02">
         </div>
-      </div>
 
-
-      <div class="product">
-        <div class="product-image">Product Image</div>
         <div class="product-info">
+
           <div>
-            <div class="product-name">Oversized Tee</div>
-            <div class="product-brand">K5 Selection</div>
+            <div class="product-name">
+              K5 Signature
+            </div>
+
+            <div class="product-brand">
+              K5 ARCHIVE
+            </div>
           </div>
-          <div class="price">$35</div>
-        </div>
-      </div>
 
-
-      <div class="product">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <div>
-            <div class="product-name">Archive Trousers</div>
-            <div class="product-brand">K5 Selection</div>
+          <div class="price">
+            ₺1,500
           </div>
-          <div class="price">$60</div>
+
         </div>
-      </div>
 
-
-      <div class="product">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <div>
-            <div class="product-name">Premium Polo</div>
-            <div class="product-brand">K5 Selection</div>
-          </div>
-          <div class="price">$50</div>
-        </div>
-      </div>
-
-
-      <div class="product">
-        <div class="product-image">Product Image</div>
-        <div class="product-info">
-          <div>
-            <div class="product-name">Streetwear Jacket</div>
-            <div class="product-brand">K5 Selection</div>
-          </div>
-          <div class="price">$95</div>
-        </div>
       </div>
 
     </div>
+
   </section>
 
 
+  <!-- ABOUT -->
   <section class="about" id="about">
 
-    <h2>BUILT FROM THE DRIP. CURATED FOR THE ARCHIVE.</h2>
+    <div class="about-label">
+      About K5 Archive
+    </div>
+
+    <h2>
+      WEAR WHAT<br>
+      FEELS LIKE YOU.
+    </h2>
 
     <p>
-      K5 Archive is a fashion project built around finding standout
-      pieces and bringing them from Istanbul to the world.
-      Every piece is selected with individuality, quality and style in mind.
+      K5 Archive is an independent clothing project connecting
+      Turkey with Tanzania and the rest of the world.
+      We focus on selected pieces, clean design and streetwear
+      culture without unnecessary limits.
     </p>
 
   </section>
 
 
-  <footer id="contact">
-    <span>© 2026 K5 ARCHIVE</span>
-    <span>ISTANBUL · TANZANIA · WORLDWIDE</span>
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <h2>LET'S TALK.</h2>
+
+    <p>
+      For orders, collaborations and enquiries:
+    </p>
+
+    <a class="contact-link" href="mailto:karumengutu34@gmail.com">
+      karumengutu34@gmail.com
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div>
+      © 2026 K5 ARCHIVE
+    </div>
+
+    <div>
+      ISTANBUL / TANZANIA
+    </div>
+
   </footer>
 
 </body>
